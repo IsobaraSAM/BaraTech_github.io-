@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isobara AI Nexus™ - Illuminate Your AI Journey</title>
+    <style>
+        :root {
+            --primary-color: #3a0ca3;
+            --secondary-color: #4cc9f0;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --background-color: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 20s linear infinite;
+        }
+        @keyframes shine {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2.5px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-top: 3rem;
+            font-size: 2rem;
+        }
+        .hero-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            position: relative;
+            z-index: 1;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .product::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .product h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .cta-button:hover {
+            background-color: #e91e63;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        .trademark {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            animation: modalSlideDown 0.5s ease;
+        }
+        @keyframes modalSlideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #000;
+        }
+        form label, form input, form select, form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        form input, form select, form textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        form textarea {
+            height: 100px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        .feature {
+            flex-basis: calc(33% - 1rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .testimonials {
+            background-color: #f0f4f8;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        .testimonial {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BaraTech AI Nexus<span class="trademark">™</span></h1>
+            <p class="hero-text">Embark on a transformative journey through the realms of artificial intelligence. Illuminate your path to innovation, insight, and mastery.</p>
+            <button class="cta-button">Start Your AI Odyssey</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h2>Elevate Your AI Expertise</h2>
+            <p>At BaraTech AI Nexus™, we believe in the power of knowledge to shape the future. Our curated newsletters and expert-led courses are designed to empower innovators, business leaders, and curious minds alike. Dive into the depths of AI and emerge with the skills to revolutionize your industry.</p>
+        </section>
+
+        <section id="features">
+            <h2>Why Choose BaraTech AI Nexus™</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-brain"></i>
+                    <h3>Cutting-Edge Insights</h3>
+                    <p>Stay ahead with the latest AI breakthroughs and applications.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert-Led Learning</h3>
+                    <p>Learn from industry pioneers and academic luminaries.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Career Acceleration</h3>
+                    <p>Gain skills that propel you to the forefront of the AI revolution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletters">
+            <h2>Illuminating AI Newsletters</h2>
+            <div class="products">
+                <div class="product">
+                    <h3>Quantum Pulse: Weekly AI Insights</h3>
+                    <p>Ride the wave of innovation with our pulsating digest of AI breakthroughs, industry disruptions, and emerging paradigms.</p>
+                    <p><strong>Enlightenment for:</strong> $12.99/month</p>
+                    <button class="cta-button subscribe-btn" data-newsletter="Quantum Pulse: Weekly AI Insights">Ignite Your Inbox</button>
+                </div>
+                <div class="product">
+                    <h3>Nexus Envision: AI in Business Monthly</h3>
+                    <p>Peer into the future of commerce with deep dives into AI's transformative impact across industries, featuring visionary case studies and expert analyses.</p>
+                    <p><strong>Visionary Value:</strong> $19.99/month</p>
+                    <button class="cta-button subscribe-btn" data-newsletter="Nexus Envision: AI in Business Monthly">Forge Your Future</button>
+                </div>
+                <div class="product">
+                    <h3>Synaptic Synthesis: AI Research Roundup</h3>
+                    <p>Synthesize groundbreaking AI research into applicable wisdom with our bi-weekly compendium of academic insights and real-world potential.</p>
+                    <p><strong>Knowledge Synthesis:</strong> $15.99/month</p>
+                    <button class="cta-button subscribe-btn" data-newsletter="Synaptic Synthesis: AI Research Roundup">Expand Your Mind</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses">
+            <h2>Transformative AI Learning Journeys</h2>
+            <div class="products">
+                <div class="product">
+                    <h3>AI Foundations: Architecting Intelligence</h3>
+                    <p>Construct your AI knowledge edifice with this comprehensive 8-week odyssey through the core concepts of artificial intelligence and machine learning.</p>
+                    <p><strong>Investment in Brilliance:</strong> $299</p>
+                    <button class="cta-button enroll-btn" data-course="AI Foundations: Architecting Intelligence">Commence Your Journey</button>
+                </div>
+                <div class="product">
+                    <h3>Neural Ascendancy: Advanced Deep Learning</h3>
+                    <p>Ascend to the pinnacle of AI mastery in this intensive 10-week expedition through neural networks, CNNs, RNNs, and the transformative world of transformers.</p>
+                    <p><strong>Ascension Price:</strong> $499</p>
+                    <button class="cta-button enroll-btn" data-course="Neural Ascendancy: Advanced Deep Learning">Elevate Your Expertise</button>
+                </div>
+                <div class="product">
+                    <h3>Strategic AI Alchemy: Leadership in the Age of Intelligence</h3>
+                    <p>Transmute raw AI potential into strategic gold in this 6-week executive course on leveraging AI for visionary decision-making and breakthrough innovation.</p>
+                    <p><strong>Leadership Catalyst:</strong> $799</p>
+                    <button class="cta-button enroll-btn" data-course="Strategic AI Alchemy: Leadership in the Age of Intelligence">Lead the Revolution</button>
+                </div>
+                <div class="product">
+                    <h3>Ethical Horizons: AI Governance and Responsibility</h3>
+                    <p>Navigate the complex ethical landscape of AI in this thought-provoking journey through moral implications, governance frameworks, and responsible AI deployment.</p>
+                    <p><strong>Ethical Illumination:</strong> $249</p>
+                    <button class="cta-button enroll-btn" data-course="Ethical Horizons: AI Governance and Responsibility">Shape the Future</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <h2>Voices of Transformation</h2>
+            <div class="testimonial">
+                <p>BaraTech AI Nexus™ ignited my passion for AI and propelled my career into new dimensions. The 'Neural Ascendancy' course was particularly enlightening, offering deep insights that I apply daily in my work."</p>
+                <p class="testimonial-author">- Dr. Ava Chen, AI Research Scientist</p>
+            </div>
+            <div class="testimonial">
+                <p>As a Business Leader, the 'Strategic AI Alchemy' course was a game-changer. It provided me with the knowledge and confidence to lead my company's AI initiatives, resulting in unprecedented growth and innovation.</p>
+                <p class="testimonial-author">- Marcus Blackwood, CEO of TechNova Solutions</p>
+            </div>
+            <div class="testimonial">
+                <p>As a Gospel Singer, the 'Ethical Horizons: AI Governance and Responsibility' course helped me navigate the ethical concerns during the production of some of my sample lyrics .</p>
+                <p class="testimonial-author">- Evelyn Raphael, Gospel Singer </p>
+            </div>
+            <div class="testimonial">
+                <p>As an AI Enthusiat , the 'Quantum Pulse: Weekly AI Insights' course encouraged my journey into the world of AI at a steady yet bold pace .</p>
+                <p class="testimonial-author">- Samuel Raphael, AI Enthusiat (Author) </p>
+        </section>
+    </main>
+
+    <div id="enrollModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enroll in <span id="courseName"></span></h2>
+            <form id="enrollForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" required>
+
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company">
+
+                <label for="profession">Profession:</label>
+                <input type="text" id="profession" name="profession" required>
+
+                <label for="use-cases">Likely Use Cases for AI in Your Work:</label>
+                <textarea id="use-cases" name="use-cases" placeholder="Please describe how you plan to apply AI knowledge in your work..."></textarea>
+
+                <button type="submit" class="cta-button">Complete Enrollment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="subscribeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe to <span id="newsletterName"></span></h2>
+            <form id="subscribeForm">
+                <label for="subName">Full Name:</label>
+                <input type="text" id="subName" name="subName" required>
+
+                <label for="subEmail">Email:</label>
+                <input type="email" id="subEmail" name="subEmail" required>
+
+                <button type="submit" class="cta-button">Complete Subscription</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BaraTech AI Nexus™. Illuminating The Path Onwards Innovation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const enrollModal = document.getElementById('enrollModal');
+        const subscribeModal = document.getElementById('subscribeModal');
+        const enrollBtns = document.querySelectorAll('.enroll-btn');
+        const subscribeBtns = document.querySelectorAll('.subscribe-btn');
+        const closeBtns = document.querySelectorAll('.close');
+
+        enrollBtns.forEach(btn => {
+            btn.onclick = function() {
+                enrollModal.style.display = "block";
+                document.getElementById('courseName').textContent = this.dataset.course;
+            }
+        });
+
+        subscribeBtns.forEach(btn => {
+            btn.onclick = function() {
+                subscribeModal.style.display = "block";
+                document.getElementById('newsletterName').textContent = this.dataset.newsletter;
+            }
+        });
+
+        closeBtns.forEach(btn => {
+            btn.onclick = function() {
+                enrollModal.style.display = "none";
+                subscribeModal.style.display = "none";
+            }
+        });
+
+        window.onclick = function(event) {
+            if (event.target == enrollModal) {
+                enrollModal.style.display = "none";
+            }
+            if (event.target == subscribeModal) {
+                subscribeModal.style.display = "none";
+            }
+        }
+
+        // Form submission (for demonstration - replace with actual form handling)
+        document.getElementById('enrollForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Enrollment submitted successfully!');
+            enrollModal.style.display = "none";
+        }
+
+        document.getElementById('subscribeForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Subscription completed successfully!');
+            subscribeModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
